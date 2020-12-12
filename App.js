@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
+  TouchableOpacity,
   StyleSheet,
   ScrollView,
   Image,
@@ -30,7 +30,19 @@ const App = () => {
     <>
     <ScrollView style={styles.container}>
       <Image style={styles.logo} source = {require("./assets/logo.png")}/>
-    <Text  style={styles.text}>hello</Text>
+      <View style={styles.gridContainer}>
+      {soundList.map((sound) => (
+          <TouchableOpacity style = {styles.box}
+          key={sound}
+          // onPress={}
+          // style={}
+          >
+            <Text style={styles.text}>{sound}</Text>
+          </TouchableOpacity>
+
+      ))}
+
+      </View>
     </ScrollView>
     </>
   )
@@ -46,9 +58,31 @@ const styles = StyleSheet.create({
     // justifyContent:'center'
   },
   logo:{
-    alignSelf:"center"
+    alignSelf:"center",
+    marginTop:20
   },
   text:{
-    color:'#0000'
+    color:'#ff4301',
+    fontSize:50,
+
+  },
+  gridContainer:{
+    flex:1,
+    margin:5,
+    flexDirection:"row", // change the flex direction from column to row
+    flexWrap:"wrap", // to wrap everything in screen
+    alignItems:"flex-start",
+    justifyContent: "space-around"
+  },
+  box:{
+    height:95,
+    alignItems:"center",
+    justifyContent:"center",
+    width:"46%",
+    marginVertical:6,
+    backgroundColor:"#0f4c75",
+    borderRadius:5,
+    shadowColor:"#393e46",
+    elevation:5
   }
 })
